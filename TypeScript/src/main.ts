@@ -1,5 +1,6 @@
 import { enableProdMode } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AsyncAction } from 'rxjs/internal/scheduler/AsyncAction';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
@@ -210,3 +211,10 @@ function fn(a:string):boolean{
 const nuncaOcurre = ()=>{
   throw new Error('No ha ocurrido');
 }
+
+type EventosRaton='pulsar'|'arrastrar'|'soltar';
+
+let accion:EventosRaton;
+
+accion='soltar';
+
