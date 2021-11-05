@@ -218,3 +218,40 @@ let accion:EventosRaton;
 
 accion='soltar';
 
+if (accion == 'soltar') {
+  
+} else if(accion=='pulsar'){
+  
+}else{
+
+}
+let contador = 25;
+let maximo = 30;
+
+let condicion = contador < maximo?contador++:contador=1;
+
+for (let index = 0; index < arrayNombre.length; index++) {
+  const element = arrayNombre[index];
+  console.log(element);
+}
+
+arrayNombre.forEach(element => {
+  console.log(element);
+});
+
+let cadenaAux:string = 'soltar';
+
+while(cadenaAux=='soltar' || cadenaAux == 'arrastrar'){
+  if(cadenaAux == 'arrastrar'){
+    break;
+  }
+}
+
+do{
+
+}while(cadenaAux=='soltar');
+
+
+
+
+
