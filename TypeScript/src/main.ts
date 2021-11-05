@@ -133,3 +133,31 @@ let colorFondo :[number,number,number,number?];
 colorFondo=colores;
 colorFondo[3]=23;
 
+enum Dias {
+  lunes=5,
+  martes,
+  miercoles,
+  jueves,
+  viernes,
+  sabado=0,
+  domingo
+}
+
+function esFinDeSemana(dia:Dias){
+ let isFinDeSemana =false;
+ switch (dia) {
+   case Dias.lunes:
+    case Dias.martes:
+      case Dias.miercoles:
+        case Dias.jueves:
+          case Dias.viernes:
+            isFinDeSemana=false;
+     break;
+  case Dias.sabado:
+    case Dias.domingo:
+      isFinDeSemana=true;
+ } 
+ return isFinDeSemana;
+}
+
+console.log(esFinDeSemana(5));
