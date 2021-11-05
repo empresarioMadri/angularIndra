@@ -175,3 +175,10 @@ console.log(localizacion.latitud);
 const cadena = JSON.stringify(localizacion);
 
 console.log(cadena);
+
+
+function escribir(mensaje:string):void{
+  console.log(mensaje);
+}
+
+escribir("fasdfasdf");
