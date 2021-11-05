@@ -121,3 +121,15 @@ console.log(mapNombres[0]);
 for (let index = 0; index < mapNombres.length; index++) {
   console.log(mapNombres[index]);
 }
+
+let capacidades:[string,number];
+
+capacidades = ['programacion',5];
+
+let colores :[number,number,number]=[255,255,0];
+
+let colorFondo :[number,number,number,number?];
+
+colorFondo=colores;
+colorFondo[3]=23;
+
