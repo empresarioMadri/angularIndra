@@ -45,8 +45,44 @@ const producto = getProducto(1);
 console.log('El producto ' + producto.nombre + ' cuesta ' + producto.precio);
 
 const presentarProducto = (nombre:string,precio:number)=>{
-  console.log('El producto ' + nombre + ' cuesta ' + precio);
+  return 'El producto ' + nombre + ' cuesta ' + precio;
 }
 
 console.log(presentarProducto(producto.nombre,producto.precio));
+
+let nombreVariable:any;
+
+let nombreVariable2:string = 'nombre';
+
+const nombreVariable3:boolean = true;
+
+nombreVariable = true;
+nombreVariable2='nombre22';
+
+let arrayNombre:string[] = ['David','Maria','Victor'];
+
+let persona:{
+  nombre:string,
+  edad:number
+}
+
+persona={
+  nombre:'David',
+  edad:47
+}
+
+let saludo:(nombre:string)=>string;
+
+saludo = function(nombre:string){
+  return 'Hola ' + nombre;
+}
+
+console.log(saludo('david'));
+
+
+
+
+
+
+
 
