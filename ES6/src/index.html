@@ -16,6 +16,8 @@
   <p id="objetos"></p>
   <p id="objetoshas"></p>
   <p id="objetoscount"></p>
+  <input type="text" id="value1" value="20">
+  <input type="text" id="value2" value="30">
 
   <script>
     
@@ -72,8 +74,43 @@
       console.log(letra);
     }
 
+    console.log('-------Clases--------')
 
+    class Coche{
 
+      constructor(matricula,color){
+        this.matricula = matricula;
+        this.color=color;
+        if(Coche.numero){
+          Coche.numero++;
+        }else{
+          Coche.numero=1;
+        }
+      }
+
+      getNombre(){
+        return this.matricula + ' ' + this.color;
+      }
+
+      static numeroCoches(){
+        return Coche.numero;
+      }
+
+    }
+
+    const coche1 = new Coche('3423FCD','rojo');
+
+    const coche2 = new Coche('6645TGG','azul');
+
+    const coche3 = new Coche('3234TDG','verde');
+
+    console.log(coche1.getNombre());
+
+    console.log(Coche.numeroCoches());
+
+    
+
+    
 
     
   </script>
