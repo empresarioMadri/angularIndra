@@ -23,5 +23,30 @@ let val2 = (<HTMLInputElement>document.getElementById('value2')).value;
 
 console.log(sumar(parseInt(val1),parseInt(val2)));
 
+console.log(typeof(val1));
 
+console.log('-------Tipos typescript dinamicos--------')
+
+interface Producto{
+  id:number,
+  nombre:string,
+  precio:number
+};
+
+function getProducto(id:number):Producto{
+  return{
+    id:id,
+    nombre:'Producto' + id,
+    precio:65
+  }
+}
+
+const producto = getProducto(1);
+console.log('El producto ' + producto.nombre + ' cuesta ' + producto.precio);
+
+const presentarProducto = (nombre:string,precio:number)=>{
+  console.log('El producto ' + nombre + ' cuesta ' + precio);
+}
+
+console.log(presentarProducto(producto.nombre,producto.precio));
 

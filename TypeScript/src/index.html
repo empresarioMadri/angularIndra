@@ -117,6 +117,26 @@
     let val1 = document.getElementById("value1").value;
     let val2 = document.getElementById("value2").value;
     console.log(sumar(val1,val2));
+    
+    console.log('-------Tipos dinamicos--------')
+
+    function getProducto(id){
+      return {
+        id:id,
+        nombre:'producto' + id,
+        precio:434.50
+      }
+    }
+
+    const producto = getProducto(1);
+
+    console.log('El producto ' + producto.Nombre + ' cuesta ' + producto.precio);
+
+    const presentarProducto = (nombre,precio)=>{
+      console.log('El producto ' + nombre + ' cuesta ' + precio)
+    }
+
+    console.log(presentarProducto(producto.precio,producto.nombre));
 
   </script>
 
