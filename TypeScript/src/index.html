@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HolaMundo</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  <app-root></app-root>
+
+  <h1>Esto es un ejemplo de LET</h1>
+  <p id="variable"></p>
+  <p id="libros"></p>
+  <p id="objetos"></p>
+  <p id="objetoshas"></p>
+  <p id="objetoscount"></p>
+  <input type="text" id="value1" value="20">
+  <input type="text" id="value2" value="30">
+
+  <script>
+    
+    const miPromesa = new Promise(function(mensaje, tiempo){
+      setTimeout(function(){mensaje("Hola Angular");}, 5000);
+    });
+
+    miPromesa.then(function(value){
+      document.getElementById("variable").innerHTML = value;
+    });
+
+    const libros = ["Quijote","Principito","Alicia en el pais"];
+    let texto = "";
+
+    for(let libro of libros[1]){
+        texto += libro + " ";
+    }
+
+    document.getElementById("libros").innerHTML = texto;
+
+    const marcas = {name : 'marcas'};
+    const flores = {name : 'flores'};
+
+    const objetos = new Map();
+
+    objetos.set(marcas,500);
+    objetos.set(flores,200);
+
+    document.getElementById("objetos").innerHTML = objetos.get(flores);
+    document.getElementById("objetoshas").innerHTML = objetos.has(flores);
+    document.getElementById("objetoscount").innerHTML = objetos.size;
+
+    for(let objeto of objetos.keys()){
+      console.log(objeto.name);
+      console.log(objetos.get(objeto));
+    }
+    console.log('-------Values--------')
+    for(let objeto of objetos.values()){
+      console.log(objeto);
+    }
+
+    console.log('-------Set--------')
+    const letras = new Set();
+    letras.add('a');
+    letras.add('b');
+    letras.add('c');
+    for(let letra of letras){
+      console.log(letra);
+    }
+    console.log(letras.has('a'));
+
+    letras.delete('b');
+    for(let letra of letras){
+      console.log(letra);
+    }
+
+    console.log('-------Clases--------')
+
+    class Coche{
+
+      constructor(matricula,color){
+        this.matricula = matricula;
+        this.color=color;
+        if(Coche.numero){
+          Coche.numero++;
+        }else{
+          Coche.numero=1;
+        }
+      }
+
+      getNombre(){
+        return this.matricula + ' ' + this.color;
+      }
+
+      static numeroCoches(){
+        return Coche.numero;
+      }
+
+    }
+
+    const coche1 = new Coche('3423FCD','rojo');
+
+    const coche2 = new Coche('6645TGG','azul');
+
+    const coche3 = new Coche('3234TDG','verde');
+
+    console.log(coche1.getNombre());
+
+    console.log(Coche.numeroCoches());
+
+    
+
+    
+
+    
+  </script>
+
+</body>
+</html>
