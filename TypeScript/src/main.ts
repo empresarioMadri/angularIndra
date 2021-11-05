@@ -73,16 +73,51 @@ persona={
 
 let saludo:(nombre:string)=>string;
 
-saludo = function(nombre:string){
+saludo = (nombre:string) =>{
   return 'Hola ' + nombre;
 }
 
-console.log(saludo('david'));
+function saludo2(nombre:string='david'):string{
+  return 'Hola ' + nombre;
+}
+
+console.log(saludo2());
+
+let empleados:{
+  primerApellido:string,
+  nombre:string,
+  edad:number
+}={
+  primerApellido:'Robledo',
+  nombre:'David',
+  edad:47
+}
+
+let vacantes:{} = {};
+
+vacantes ={
+  nombre:'David'
+}
+
+console.log(vacantes);
 
 
+console.log(arrayNombre[1]);
 
+arrayNombre[3]='Martina';
 
+console.log(arrayNombre[3]);
 
+arrayNombre.push('Sergio');
 
+console.log(arrayNombre[4]);
 
+console.log(arrayNombre.length);
 
+let mapNombres = arrayNombre.map(nombre=>nombre + ' hola');
+
+console.log(mapNombres[0]);
+
+for (let index = 0; index < mapNombres.length; index++) {
+  console.log(mapNombres[index]);
+}
