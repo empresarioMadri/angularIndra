@@ -161,3 +161,17 @@ function esFinDeSemana(dia:Dias){
 }
 
 console.log(esFinDeSemana(5));
+
+
+const json = '{"latitud":34,"longitud":23}';
+const localizacion = JSON.parse(json);
+
+localizacion.latitud = "prueba";
+
+console.log(localizacion);
+
+console.log(localizacion.latitud);
+
+const cadena = JSON.stringify(localizacion);
+
+console.log(cadena);
