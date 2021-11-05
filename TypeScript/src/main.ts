@@ -182,3 +182,31 @@ function escribir(mensaje:string):void{
 }
 
 escribir("fasdfasdf");
+
+
+function saltarError(mensaje:string):never{
+  throw new Error(mensaje);
+}
+
+
+let bucle = function infinito(){
+  while(true){
+    console.log('hola');
+  }
+}
+
+function fn(a:string):boolean{
+ if(a == 'si'){
+   return true;
+  } 
+  if(a == 'no'){
+    return false;
+  }
+
+  return nuncaOcurre();
+
+}
+
+const nuncaOcurre = ()=>{
+  throw new Error('No ha ocurrido');
+}
