@@ -269,6 +269,43 @@ function darTotal(...numeros:number[]){
 
 console.log(darTotal(10,40,50));
 
+function  incluirNumero(a:number,b:number):number{
+  return a+b;
+}
+
+function incluirCadena(a:string,b:string):string{
+  return a+b;
+}
+
+/*function incluir(a:number|string,b:number|string):number|string{
+  if(typeof a ==='number' && typeof b === 'number')
+    return a+b;
+  if(typeof a ==='string' && typeof b === 'string')
+    return a+b;
+
+  return nuncaOcurre();
+}*/
+
+function incluir(a:number,b:number):number;
+
+function incluir(a:string,b:string,c?:string):string;
+
+function incluir(a:any,b:any,c?:any):any{
+  return a+b;
+}
+
+
+let result = incluir(20,40);
+let result2 = incluir('20','40','20');
+
+
+
+
+
+
+
+
+
 
 
 
