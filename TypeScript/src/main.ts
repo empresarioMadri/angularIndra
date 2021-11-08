@@ -298,10 +298,12 @@ function incluir(a:any,b:any,c?:any):any{
 let result = incluir(20,40);
 let result2 = incluir('20','40','20');
 
+const resultad:string='prueba';
 
-class Vehiculo{
+
+abstract class Vehiculo{
   private _marca:string;
-  private _color:string;
+  readonly _color:string;
 
   constructor(marca:string,color:string){
     this._marca = marca;
@@ -315,6 +317,8 @@ class Vehiculo{
   public set marca(marca:string){
     this._marca = marca;
   }
+
+  abstract arrancar():string;
 }
 
 class Coche extends Vehiculo{
@@ -324,6 +328,10 @@ class Coche extends Vehiculo{
     super(marca,color);
     this._plazas=plazas;
     super.marca='opel';
+  }
+
+  public arrancar():string{
+    return 'arrancando';
   }
 }
 
