@@ -190,11 +190,11 @@ function saltarError(mensaje:string):never{
 }
 
 
-let bucle = function infinito(){
+/*let bucle = function infinito(){
   while(true){
     console.log('hola');
   }
-}
+}*/
 
 function fn(a:string):boolean{
  if(a == 'si'){
@@ -241,15 +241,15 @@ arrayNombre.forEach(element => {
 
 let cadenaAux:string = 'soltar';
 
-while(cadenaAux=='soltar' || cadenaAux == 'arrastrar'){
+/*while(cadenaAux=='soltar' || cadenaAux == 'arrastrar'){
   if(cadenaAux == 'arrastrar'){
     break;
   }
-}
+}*/
 
-do{
+/*do{
 
-}while(cadenaAux=='soltar');
+}while(cadenaAux=='soltar');*/
 
 function multiplicar(a:number=45,b:number,c?:number):number{
   if(typeof c !== 'undefined'){
@@ -258,6 +258,18 @@ function multiplicar(a:number=45,b:number,c?:number):number{
     return a*b;
   }
 }
+
+
+function darTotal(...numeros:number[]){
+  let total =0;
+  numeros.forEach((num)=>total+=num);
+  return total;
+}
+
+
+console.log(darTotal(10,40,50));
+
+
 
 
 
