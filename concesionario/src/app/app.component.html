@@ -1,22 +1,24 @@
 <h1 style="text-align: center;">
-  Hola mundo {{nombre}}
+  Administracion de coches
 </h1>
-<p *ngIf='sumaPrecios()>3000;else menor' style='color:blue'>{{sumaPrecios()}}</p>
-<ng-template #menor>
-  <h2 style="color:brown">Es menor {{sumaPrecios()}}</h2>
-</ng-template>
-
-<table>
-  <tr *ngFor='let precio of precioCoches'>
-    <td>{{precio}}</td>
+<table border="1" *ngIf="coches.length>0; else sinCoches">
+  <tr>
+    <th>Marca</th>
+    <th>Color</th>
+  </tr>
+  <tr *ngFor="let coche of coches">
+    <td>{{coche.marca}}</td>
+    <td>{{coche.color}}</td>
   </tr>
 </table>
+<ng-template #sinCoches>
+  <p>No hay coches para presentar</p>
+</ng-template>
+<p>
+  Incluir la marca <input type='text' [(ngModel)]='marca'>
+</p>
+<p>
+  Incluir el color <input type='text' [(ngModel)]='color'>
+</p>
 
-<h2>Numero coches {{numeroCoches}}</h2>
-<button (click)='incrementar()'>Sumar 1 coche</button>
-<button (click)='decrementar()'>Sumar 1 restar un coche</button>
-<br/>
-<br/>
-Ingrese su nombre<input type='text' [(ngModel)]='nombre'>
-
-<h2>Nombre: {{nombre}}</h2>
+<p><button (click)="incluirCoche()">Incluir coche</button></p>
