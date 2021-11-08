@@ -251,6 +251,16 @@ do{
 
 }while(cadenaAux=='soltar');
 
+function multiplicar(a:number=45,b:number,c?:number):number{
+  if(typeof c !== 'undefined'){
+    return a*b*c;
+  }else{
+    return a*b;
+  }
+}
+
+
+
 
 
 
