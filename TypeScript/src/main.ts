@@ -299,7 +299,37 @@ let result = incluir(20,40);
 let result2 = incluir('20','40','20');
 
 
+class Vehiculo{
+  private _marca:string;
+  private _color:string;
 
+  constructor(marca:string,color:string){
+    this._marca = marca;
+    this._color = color;
+  }
+
+  public get marca(){
+    return this._marca;
+  }
+
+  public set marca(marca:string){
+    this._marca = marca;
+  }
+}
+
+class Coche extends Vehiculo{
+  private _plazas:number;
+
+  constructor(plazas:number,marca:string,color:string){
+    super(marca,color);
+    this._plazas=plazas;
+    super.marca='opel';
+  }
+}
+
+let coche = new Coche(5,'seat','rojo');
+coche.marca = 'opel';
+console.log(coche.marca);
 
 
 
