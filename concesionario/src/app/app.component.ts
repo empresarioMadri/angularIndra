@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'concesionario';
+  nombre = 'Proyecto hola mundo inicial';
+  precioCoches =  [1330,500,200];
+
+  sumaPrecios():number{
+    let suma =0;
+    this.precioCoches.forEach((num)=>suma+=num);
+    return suma;
+  }
+
 }
