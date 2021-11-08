@@ -20,6 +20,16 @@ export class AppComponent {
     this.coches.push(coche);
   }
 
+  modificar(indice:number){
+    const posicion = this.coches[indice];
+    posicion.color = this.color;
+    posicion.marca = this.marca;
+  }
+
+  borrar(indice:number){
+    this.coches.splice(indice,1);
+  }
+
 
 }
 
