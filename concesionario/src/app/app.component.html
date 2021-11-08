@@ -5,12 +5,14 @@
   <tr>
     <th>Marca</th>
     <th>Color</th>
+    <th>posicion</th>
     <th>Acciones</th>
   </tr>
-  <tr *ngFor="let coche of coches;let i=index">
+  <tr *ngFor="let coche of coches">
     <td>{{coche.marca}}</td>
     <td>{{coche.color}}</td>
-    <td><button (click)="modificar(i)">Modificar</button><button (click)="borrar(i)">Borrar</button></td>
+    <td>{{coche.posicion}}</td>
+    <td><button (click)="modificar(coche.posicion)">Modificar</button><button (click)="borrar(coche.posicion)">Borrar</button></td>
   </tr>
 </table>
 <ng-template #sinCoches>
