@@ -9,6 +9,8 @@ export class CabeceraComponent implements OnInit {
 
   @Input() cadena:string='';
 
+  contador:number=0;
+
   @Output() botonPulsado= new EventEmitter();
 
   constructor() { }
@@ -18,6 +20,14 @@ export class CabeceraComponent implements OnInit {
 
   cambiarPie(){
     this.botonPulsado.emit('Pie cambiado');
+  }
+
+  incrementar(){
+    this.contador++;
+  }
+
+  decrementar(){
+    this.contador--;
   }
 
 }
