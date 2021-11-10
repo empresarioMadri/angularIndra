@@ -1,5 +1,5 @@
-<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #cabecera></app-cabecera>
-<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #cabecera1></app-cabecera>
+<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector1></app-cabecera>
+<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector2></app-cabecera>
 <table border="1" *ngIf="coches.length>0; else sinCoches">
   <tr>
     <th>Marca</th>
@@ -25,10 +25,8 @@
 </p>
 
 <p><button (click)="incluirCoche()">Incluir coche</button></p>
-<button (click)="cabecera.incrementar()">incrementar</button>
-<button (click)="cabecera.decrementar()">decrementar</button>
-<br>
-<button (click)="cabecera1.incrementar()">incrementar</button>
-<button (click)="cabecera1.decrementar()">decrementar</button>
+<button (click)="incrementar()">incrementar</button>
+<button (click)="decrementar()">decrementar</button>
 
-<app-pie cadena="{{cadenaPie}}"></app-pie>
+
+<app-pie cadena="{{cadenaPie}}" [coches]="coches"></app-pie>

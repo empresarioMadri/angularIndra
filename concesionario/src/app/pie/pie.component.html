@@ -1,1 +1,18 @@
 <h1>{{cadenaConcatenada}}</h1>
+
+<table border="1" *ngIf="coches.length>0; else sinCoches">
+    <tr>
+      <th>Marca</th>
+      <th>Color</th>
+      <th>posicion</th>
+    </tr>
+    <tr *ngFor="let coche of coches">
+      <td>{{coche.marca}}</td>
+      <td>{{coche.color}}</td>
+      <td>{{coche.posicion}}</td>
+    </tr>
+  </table>
+
+  <ng-template #sinCoches>
+    <p>No hay coches para presentar</p>
+  </ng-template>

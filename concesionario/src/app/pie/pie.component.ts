@@ -9,6 +9,8 @@ export class PieComponent implements OnInit {
 
   @Input() cadena:string='Pie de pagina ';
 
+  @Input() coches: any;
+
   constructor() { }
 
   ngOnInit(): void {

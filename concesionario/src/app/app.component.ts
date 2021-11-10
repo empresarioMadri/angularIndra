@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { CabeceraComponent } from './cabecera/cabecera.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,9 @@ export class AppComponent {
   marca:string='';
   color:string='';
   cadenaPie:string ='';
+
+  @ViewChild('selector1')
+  selector1!: CabeceraComponent;
 
 
   constructor(){
@@ -42,6 +46,14 @@ export class AppComponent {
 
   cambiarPie(cadena:string){
     this.cadenaPie=cadena;
+  }
+
+  incrementar(){
+    this.selector1.incrementar();
+  }
+
+  decrementar(){
+    this.selector1.decrementar();
   }
 
 
