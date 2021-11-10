@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { PieComponent } from './pie/pie.component';
+import { ConcesionarioModule } from './concesionario/concesionario.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { PieComponent } from './pie/pie.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ConcesionarioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

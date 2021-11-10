@@ -1,22 +1,6 @@
 <app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector1></app-cabecera>
 <app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector2></app-cabecera>
-<table border="1" *ngIf="coches.length>0; else sinCoches">
-  <tr>
-    <th>Marca</th>
-    <th>Color</th>
-    <th>posicion</th>
-    <th>Acciones</th>
-  </tr>
-  <tr *ngFor="let coche of coches">
-    <td>{{coche.marca}}</td>
-    <td>{{coche.color}}</td>
-    <td>{{coche.posicion}}</td>
-    <td><button (click)="modificar(coche.posicion)">Modificar</button><button (click)="borrar(coche.posicion)">Borrar</button></td>
-  </tr>
-</table>
-<ng-template #sinCoches>
-  <p>No hay coches para presentar</p>
-</ng-template>
+
 <p>
   Incluir la marca <input type='text' [(ngModel)]='marca'>
 </p>
@@ -30,3 +14,5 @@
 
 
 <app-pie cadena="{{cadenaPie}}" [coches]="coches"></app-pie>
+
+<app-listado [coches]="coches"></app-listado>
