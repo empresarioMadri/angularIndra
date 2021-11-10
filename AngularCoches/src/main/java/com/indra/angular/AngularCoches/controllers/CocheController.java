@@ -20,6 +20,10 @@ public class CocheController {
         coche.setColor("rosa");
         coche.setMarca("Tesla");
         coches.add(coche);
+        coche = new Coche();
+        coche.setColor("violeta");
+        coche.setMarca("Mercedes");
+        coches.add(coche);
         return new ResponseEntity<>(coches, HttpStatus.OK);
     }
 
