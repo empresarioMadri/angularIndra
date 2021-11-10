@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-cabecera',
@@ -9,9 +9,15 @@ export class CabeceraComponent implements OnInit {
 
   @Input() cadena:string='';
 
+  @Output() botonPulsado= new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cambiarPie(){
+    this.botonPulsado.emit('Pie cambiado');
   }
 
 }

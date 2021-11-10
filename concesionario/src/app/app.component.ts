@@ -10,6 +10,7 @@ export class AppComponent {
   coches: Coche[];
   marca:string='';
   color:string='';
+  cadenaPie:string ='';
 
 
   constructor(){
@@ -37,6 +38,10 @@ export class AppComponent {
       const coche = this.coches[index];
       coche.posicion=index;
     }
+  }
+
+  cambiarPie(cadena:string){
+    this.cadenaPie=cadena;
   }
 
 
