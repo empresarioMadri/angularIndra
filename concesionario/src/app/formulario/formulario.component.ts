@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ValidacionEmail } from '../validacion-email';
 
 @Component({
   selector: 'app-formulario',
@@ -9,10 +10,12 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class FormularioComponent implements OnInit {
 
   formularioVentas = new FormGroup({
-    venta:new FormControl(''),
-    email :new FormControl(''),
-    quiereComprar:new FormControl('si'),
-    escogido:new FormControl(true)
+    venta:new FormControl('',[Validators.required,Validators.minLength(10)]),
+    email :new FormControl('',[ValidacionEmail.validar]),
+    decisiones:new FormGroup({
+      quiereComprar:new FormControl('si'),
+      escogido:new FormControl(true)
+    })
   })
 
   listaVentas! : string[];
@@ -30,7 +33,7 @@ export class FormularioComponent implements OnInit {
   }
 
   agregar(){
-    this.listaVentas.push(this.formularioVentas.value.venta + '-' + this.formularioVentas.value.email + '-' + this.formularioVentas.value.quiereComprar + '-' + this.formularioVentas.value.escogido);
+    this.listaVentas.push(this.formularioVentas.value.venta + '-' + this.formularioVentas.value.email + '-' + this.formularioVentas.value.decisiones.quiereComprar + '-' + this.formularioVentas.value.decisiones.escogido);
     localStorage.setItem('ventas',JSON.stringify(this.listaVentas));
     this.formularioVentas.value.venta = '';
     this.formularioVentas.value.email = '';

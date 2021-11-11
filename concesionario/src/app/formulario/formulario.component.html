@@ -2,13 +2,21 @@
 
 Ventas
 <form [formGroup]="formularioVentas" (ngSubmit)="agregar()">
-    <input type='text' formControlName='venta'>
+    <input type='text' formControlName='venta' required>
+    <div *ngIf="this.formularioVentas.get('venta')?.errors?.required">
+        El detalle venta no puede ser vacio
+    </div>
+    <div *ngIf="this.formularioVentas.get('venta')?.errors?.minlength">
+        El detalle debe tener al menos 10 caracteres
+    </div>
     <input type='text' formControlName='email' ><br>
-    Quiere comprar el coche?
-    <input type="radio" formControlName="quiereComprar" value="si">Si
-    <input type="radio" formControlName="quiereComprar" value="no">No
-    <br>
-    <input type="checkbox" formControlName="escogido" value="false">Propia decision
+    <div formGroupName="decisiones">
+        Quiere comprar el coche?
+        <input type="radio" formControlName="quiereComprar" value="si">Si
+        <input type="radio" formControlName="quiereComprar" value="no">No
+        <br>
+        <input type="checkbox" formControlName="escogido" value="false">Propia decision
+    </div>
     <br>
     <button type="submit">Agregar venta</button>
 </form>
