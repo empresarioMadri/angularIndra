@@ -10,7 +10,8 @@ export class FormularioComponent implements OnInit {
 
   formularioVentas = new FormGroup({
     venta:new FormControl(''),
-    email :new FormControl('')
+    email :new FormControl(''),
+    quiereComprar:new FormControl('si')
   })
 
   listaVentas! : string[];
@@ -28,7 +29,7 @@ export class FormularioComponent implements OnInit {
   }
 
   agregar(){
-    this.listaVentas.push(this.formularioVentas.value.venta + '-' + this.formularioVentas.value.email);
+    this.listaVentas.push(this.formularioVentas.value.venta + '-' + this.formularioVentas.value.email + '-' + this.formularioVentas.value.quiereComprar);
     localStorage.setItem('ventas',JSON.stringify(this.listaVentas));
     this.formularioVentas.value.venta = '';
     this.formularioVentas.value.email = '';

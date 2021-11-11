@@ -3,7 +3,11 @@
 Ventas
 <form [formGroup]="formularioVentas" (ngSubmit)="agregar()">
     <input type='text' formControlName='venta'>
-    <input type='text' formControlName='email' >
+    <input type='text' formControlName='email' ><br>
+    Quiere comprar el coche?
+    <input type="radio" formControlName="quiereComprar" value="si">Si
+    <input type="radio" formControlName="quiereComprar" value="no">No
+    <br>
     <button type="submit">Agregar venta</button>
 </form>
 <ol>
