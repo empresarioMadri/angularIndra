@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbCalendar, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -18,9 +19,17 @@ export class LoginComponent implements OnInit {
 
   fechaActual = new Date();
 
-  constructor() { }
-
   ngOnInit(): void {
+  }
+
+  model!: NgbDateStruct;
+  date!: {year: number, month: number};
+
+  constructor(private calendar: NgbCalendar) {
+  }
+
+  selectToday() {
+    this.model = this.calendar.getToday();
   }
 
 }

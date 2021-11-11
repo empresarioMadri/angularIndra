@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
 import { SaludoPipe } from './saludo.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SaludoPipe } from './saludo.pipe';
     AppRoutingModule,
     FormsModule,
     ConcesionarioModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
