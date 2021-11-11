@@ -10,6 +10,7 @@ import { ConcesionarioModule } from './concesionario/concesionario.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
 import { LoginComponent } from './login/login.component';
+import { SaludoPipe } from './saludo.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LoginComponent } from './login/login.component';
     CabeceraComponent,
     PieComponent,
     InicioComponent,
-    LoginComponent
+    LoginComponent,
+    SaludoPipe
   ],
   imports: [
     BrowserModule,
