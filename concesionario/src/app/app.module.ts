@@ -9,13 +9,15 @@ import { PieComponent } from './pie/pie.component';
 import { ConcesionarioModule } from './concesionario/concesionario.module';
 import { HttpClientModule } from '@angular/common/http';
 import { InicioComponent } from './inicio/inicio.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CabeceraComponent,
     PieComponent,
-    InicioComponent
+    InicioComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
