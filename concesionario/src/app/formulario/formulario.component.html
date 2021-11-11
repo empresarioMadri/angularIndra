@@ -1,0 +1,13 @@
+<p>formulario works!</p>
+
+Ventas
+<input type='text' [formControl]='ventas'>
+<button (click)="agregar()">Agregar venta</button>
+<ol>
+    <li *ngFor="let venta of listaVentas;let i = index">
+        {{venta}} <a (click)="borrar(i)" href="/formulario">Borrar</a>
+    </li>
+</ol>
+
+
+
