@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario',
@@ -8,7 +8,10 @@ import { FormControl } from '@angular/forms';
 })
 export class FormularioComponent implements OnInit {
 
-  ventas = new FormControl();
+  formularioVentas = new FormGroup({
+    venta:new FormControl(''),
+    email :new FormControl('')
+  })
 
   listaVentas! : string[];
 
@@ -25,9 +28,10 @@ export class FormularioComponent implements OnInit {
   }
 
   agregar(){
-    this.listaVentas.push(this.ventas.value);
+    this.listaVentas.push(this.formularioVentas.value.venta + '-' + this.formularioVentas.value.email);
     localStorage.setItem('ventas',JSON.stringify(this.listaVentas));
-    this.ventas.setValue('');
+    this.formularioVentas.value.venta = '';
+    this.formularioVentas.value.email = '';
   }
 
   borrar(posicion:number){

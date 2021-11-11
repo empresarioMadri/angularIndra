@@ -1,8 +1,11 @@
 <p>formulario works!</p>
 
 Ventas
-<input type='text' [formControl]='ventas'>
-<button (click)="agregar()">Agregar venta</button>
+<form [formGroup]="formularioVentas" (ngSubmit)="agregar()">
+    <input type='text' formControlName='venta'>
+    <input type='text' formControlName='email' >
+    <button type="submit">Agregar venta</button>
+</form>
 <ol>
     <li *ngFor="let venta of listaVentas;let i = index">
         {{venta}} <a (click)="borrar(i)" href="/formulario">Borrar</a>
