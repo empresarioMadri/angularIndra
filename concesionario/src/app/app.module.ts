@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 import { PieComponent } from './pie/pie.component';
 import { ConcesionarioModule } from './concesionario/concesionario.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ConcesionarioModule } from './concesionario/concesionario.module';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ConcesionarioModule
+    ConcesionarioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

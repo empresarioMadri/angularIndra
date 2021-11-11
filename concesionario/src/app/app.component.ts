@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { CabeceraComponent } from './cabecera/cabecera.component';
 
@@ -8,7 +9,7 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 })
 export class AppComponent {
   
-  coches: Coche[];
+  coches: any;
   marca:string='';
   color:string='';
   cadenaPie:string ='';
@@ -16,8 +17,20 @@ export class AppComponent {
   @ViewChild('selector1')
   selector1!: CabeceraComponent;
 
+  ngOnInit(){
+    this.http.get("http://localhost:9090/coches")
+    .subscribe(
+      result=>{
+        this.coches=result;
+      },
+      error=>{
+        console.log('Error al recuperar coches');
+      }
+    )
+  }
 
-  constructor(){
+
+  constructor(private http:HttpClient){
     this.coches = [];
   }
 
