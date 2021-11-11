@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, ViewChild } from '@angular/core';
 import { CabeceraComponent } from './cabecera/cabecera.component';
+import { CochesService } from './coches.service';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +18,7 @@ export class AppComponent {
   selector1!: CabeceraComponent;
 
   ngOnInit(){
-    this.http.get("http://localhost:9090/coches")
-    .subscribe(
+    this.cocheServicio.traerCoches().subscribe(
       result=>{
         this.coches=result;
       },
@@ -30,7 +29,7 @@ export class AppComponent {
   }
 
 
-  constructor(private http:HttpClient){
+  constructor(private cocheServicio:CochesService){
     this.coches = [];
   }
 
