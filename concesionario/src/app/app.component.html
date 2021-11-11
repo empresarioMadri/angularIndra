@@ -1,18 +1,1 @@
-<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector1></app-cabecera>
-<app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector2></app-cabecera>
-
-<p>
-  Incluir la marca <input type='text' [(ngModel)]='marca'>
-</p>
-<p>
-  Incluir el color <input type='text' [(ngModel)]='color'>
-</p>
-
-<p><button (click)="incluirCoche()">Incluir coche</button></p>
-<button (click)="incrementar()">incrementar</button>
-<button (click)="decrementar()">decrementar</button>
-
-
-<app-pie cadena="{{cadenaPie}}" [coches]="coches"></app-pie>
-
-<app-listado [coches]="coches"></app-listado>
+<app-inicio></app-inicio>

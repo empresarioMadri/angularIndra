@@ -8,12 +8,14 @@ import { CabeceraComponent } from './cabecera/cabecera.component';
 import { PieComponent } from './pie/pie.component';
 import { ConcesionarioModule } from './concesionario/concesionario.module';
 import { HttpClientModule } from '@angular/common/http';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CabeceraComponent,
-    PieComponent
+    PieComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
