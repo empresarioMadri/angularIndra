@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="${mensaje}"></h1>
+    <h1 th:text="${coche.marca}"></h1>
+    <h1 th:text="${coche.color}"></h1>
+    <form action="#" th:action="@{/agregar}" method="post" th:object="${coche}">
+        Marca<input type="text" th:field="*{marca}" /><br>
+        Color<input type="text" th:field="*{color}" /><br>
+        <input type="submit" value="Agregar"/>
+    </form>
 </body>
 </html>

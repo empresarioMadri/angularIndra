@@ -1,15 +1,26 @@
 package com.indra.springboot.ProyectoHolaMundo.controllers;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@Slf4j
 public class CochesController {
 
     @RequestMapping("/")
     public String hola(Model modelo){
-        modelo.addAttribute("mensaje","Hola mundo");
+        Coche coche = new Coche("seat","rojo");
+        modelo.addAttribute("coche",coche);
+        return "hola";
+    }
+
+    @PostMapping("/agregar")
+    public String agregar(@ModelAttribute("coche") Coche coche){
+        log.info("Agregando el coche " + coche );
         return "hola";
     }
 
