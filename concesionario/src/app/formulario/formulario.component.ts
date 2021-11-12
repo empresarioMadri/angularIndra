@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { ValidacionEmail } from '../validacion-email';
 
 @Component({
@@ -21,7 +21,7 @@ export class FormularioComponent implements OnInit {
   listaVentas! : string[];
 
   constructor() {
-
+    
   }
 
   ngOnInit(): void {
@@ -45,4 +45,19 @@ export class FormularioComponent implements OnInit {
     localStorage.setItem('ventas',JSON.stringify(this.listaVentas));
   }
 
+  getFormValidationErrors():any {
+    let errores:any = [];
+    Object.keys(this.formularioVentas.controls).forEach(key => {
+ 
+       const controlErrors: ValidationErrors = this.formularioVentas.get(key)?.errors || {};
+       if (controlErrors != null) {
+          Object.keys(controlErrors).forEach(keyError => {
+             errores.push('Key control: ' + key + ', keyError: ' + keyError + ', err value: ', controlErrors[keyError]);
+          });
+       }
+    });
+    return errores;
+ }
+
 }
+

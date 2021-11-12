@@ -22,7 +22,8 @@ Ventas
         <input type="checkbox" formControlName="escogido" value="false">Propia decision
     </div>
     <br>
-    <button type="submit">Agregar venta</button>
+    {{this.getFormValidationErrors()}}
+    <button type="submit" [disabled]="this.formularioVentas.invalid">Agregar venta</button>
 </form>
 <ol>
     <li *ngFor="let venta of listaVentas;let i = index">
