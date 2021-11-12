@@ -9,7 +9,11 @@ Ventas
     <div *ngIf="this.formularioVentas.get('venta')?.errors?.minlength">
         El detalle debe tener al menos 10 caracteres
     </div>
-    <input type='text' formControlName='email' ><br>
+    <input type='text' formControlName='email' >
+    <span *ngIf="this.formularioVentas.get('email')?.errors?.validar">
+        No tiene un @
+    </span>
+    <br>
     <div formGroupName="decisiones">
         Quiere comprar el coche?
         <input type="radio" formControlName="quiereComprar" value="si">Si
