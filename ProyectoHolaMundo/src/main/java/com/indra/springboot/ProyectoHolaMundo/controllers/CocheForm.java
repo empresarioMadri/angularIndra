@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Getter
 @AllArgsConstructor
 @ToString
-public class Coche {
+public class CocheForm {
     @NotNull
     @Size(min = 2,max = 30)
     private String marca;

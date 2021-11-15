@@ -16,13 +16,13 @@ public class CochesController {
 
     @RequestMapping("/")
     public String hola(Model modelo){
-        Coche coche = new Coche("seat","rojo");
+        CocheForm coche = new CocheForm("seat","rojo");
         modelo.addAttribute("coche",coche);
         return "hola";
     }
 
     @PostMapping("/agregar")
-    public String agregar(@ModelAttribute("coche") @Valid Coche coche, BindingResult bindingResult){
+    public String agregar(@ModelAttribute("coche") @Valid CocheForm coche, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             log.info("Error agregando el coche " + coche );
         }
