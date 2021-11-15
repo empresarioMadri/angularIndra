@@ -8,7 +8,9 @@
     <h1 th:text="${coche.marca}"></h1>
     <h1 th:text="${coche.color}"></h1>
     <form action="#" th:action="@{/agregar}" method="post" th:object="${coche}">
-        Marca<input type="text" th:field="*{marca}" /><br>
+        Marca<input type="text" th:field="*{marca}" />
+        <span th:if="${#fields.hasErrors('marca')}">El campo marca no es correcto</span>
+        <br>
         Color<input type="text" th:field="*{color}" /><br>
         <input type="submit" value="Agregar"/>
     </form>
