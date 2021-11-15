@@ -1,6 +1,8 @@
 package com.indra.springboot.ProyectoHolaMundo.controllers;
 
+import com.indra.springboot.ProyectoHolaMundo.services.CocheServices;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +16,9 @@ import javax.validation.Valid;
 @Slf4j
 public class CochesController {
 
+    @Autowired
+    private CocheServices cocheServices;
+
     @RequestMapping("/")
     public String hola(Model modelo){
         CocheForm coche = new CocheForm("seat","rojo");
@@ -22,11 +27,12 @@ public class CochesController {
     }
 
     @PostMapping("/agregar")
-    public String agregar(@ModelAttribute("coche") @Valid CocheForm coche, BindingResult bindingResult){
+    public String agregarCoche(@ModelAttribute("coche") @Valid CocheForm coche, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             log.info("Error agregando el coche " + coche );
         }
         log.info("Agregando el coche " + coche );
+        cocheServices.agregarCoche(coche);
         return "hola";
     }
 
