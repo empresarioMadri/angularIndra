@@ -35,6 +35,14 @@ export class InicioComponent implements OnInit {
 
   incluirCoche(){
     const coche = new Coche(this.marca,this.color,Coche.ultimaPosicion);
+    this.cocheServicio.incluirCoche(this.marca,this.color).subscribe(
+      result=>{
+        console.log(result);
+      },
+      error=>{
+        console.log(error);
+      }
+    );
     Coche.ultimaPosicion++;
     this.coches.push(coche);
   }

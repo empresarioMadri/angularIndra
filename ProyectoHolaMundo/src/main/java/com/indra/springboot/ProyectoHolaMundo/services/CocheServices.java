@@ -6,6 +6,12 @@ import com.indra.springboot.ProyectoHolaMundo.repositories.CocheRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 @Service
 public class CocheServices {
@@ -23,5 +29,15 @@ public class CocheServices {
         cocheRepository.save(cocheDto);
 
 
+    }
+
+    public List<CocheForm> listadoCoches() {
+        List<CocheForm> coches = new ArrayList<>();
+        Iterator it = cocheRepository.findAll().iterator();
+        while(it.hasNext()){
+            CocheDto cocheDto = (CocheDto) it.next();
+            coches.add(modelMapper.map(cocheDto,CocheForm.class));
+        }
+        return coches;
     }
 }
