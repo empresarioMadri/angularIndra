@@ -6,8 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface CocheRepository extends CrudRepository<CocheDto, Long> {
-
-    public List<CocheDto> findByComercialDto(ComercialDto comercialDto);
+public interface ComercialRepository extends CrudRepository<ComercialDto, Long> {
 
 }

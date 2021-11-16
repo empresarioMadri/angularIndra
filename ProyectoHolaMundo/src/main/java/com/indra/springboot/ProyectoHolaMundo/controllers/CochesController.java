@@ -53,4 +53,10 @@ public class CochesController {
         return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCoches(), HttpStatus.OK);
     }
 
+
+    @GetMapping("/cochesPorComercial")
+    public ResponseEntity<List<CocheForm>> listadoCoches(@RequestParam(name="id",required = true)Long idComercial){
+        return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorComercial(idComercial), HttpStatus.OK);
+    }
+
 }

@@ -21,4 +21,8 @@ public class CocheDto {
 
     private String marca;
     private String color;
+
+    @ManyToOne
+    @JoinColumn(name="comercialId")
+    private ComercialDto comercialDto;
 }
