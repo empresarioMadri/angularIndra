@@ -23,6 +23,7 @@ public class CocheDto {
     private String color;
 
     @ManyToOne
-    @JoinColumn(name="comercialId")
-    private ComercialDto comercialDto;
+    @JoinColumn(name="ventaId")
+    private VentasDto ventasDto;
+
 }

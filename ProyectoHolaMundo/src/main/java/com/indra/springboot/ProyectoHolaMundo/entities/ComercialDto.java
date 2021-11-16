@@ -24,7 +24,4 @@ public class ComercialDto {
 
     private String dni;
 
-    @OneToMany(mappedBy = "comercialDto")
-    private List<CocheDto> cocheDto;
-
 }
