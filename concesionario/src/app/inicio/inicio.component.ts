@@ -43,8 +43,6 @@ export class InicioComponent implements OnInit {
         console.log(error);
       }
     );
-    Coche.ultimaPosicion++;
-    this.coches.push(coche);
   }
 
   modificar(indice:number){

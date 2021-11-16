@@ -38,6 +38,16 @@ public class CochesController {
         return "hola";
     }
 
+    @PostMapping("/agregarAngular")
+    public ResponseEntity<String> agregarCocheAngular(@RequestBody @Valid CocheForm coche, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return new ResponseEntity<>(bindingResult.toString(),HttpStatus.BAD_REQUEST);
+        }
+        log.info("Agregando el coche " + coche );
+        cocheServices.agregarCoche(coche);
+        return new ResponseEntity<>("",HttpStatus.OK);
+    }
+
     @GetMapping("/coches")
     public ResponseEntity<List<CocheForm>> listadoCoches(){
         return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCoches(), HttpStatus.OK);

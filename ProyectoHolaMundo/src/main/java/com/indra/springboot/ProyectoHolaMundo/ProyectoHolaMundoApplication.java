@@ -31,7 +31,7 @@ public class ProyectoHolaMundoApplication implements WebMvcConfigurer {
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {
 		LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
-		lci.setParamName("lang");
+		lci.setParamName("idioma");
 		return lci;
 	}
 

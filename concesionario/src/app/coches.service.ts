@@ -15,6 +15,6 @@ export class CochesService {
   incluirCoche(marca_:string,color_:string){
     const body = {'marca':marca_,'color':color_};
     let headers = {'Content-Type': 'application/json'};
-    return this.http.post<any>('http://localhost:9090/agregar',body,{headers});
+    return this.http.post<any>('http://localhost:9090/agregarAngular',body,{headers});
   }
 }
