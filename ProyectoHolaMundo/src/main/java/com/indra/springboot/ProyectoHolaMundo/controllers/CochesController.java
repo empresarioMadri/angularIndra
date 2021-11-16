@@ -59,4 +59,19 @@ public class CochesController {
         return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorComercial(idComercial), HttpStatus.OK);
     }
 
+    @GetMapping("/cochesPorComercial2/{idComercial}")
+    public ResponseEntity<List<CocheForm>> listadoCoches2(@PathVariable Long idComercial){
+        return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorComercial(idComercial), HttpStatus.OK);
+    }
+
+    @GetMapping("/cochesPorColor")
+    public ResponseEntity<List<CocheForm>> listadoCoches3(@RequestParam(name="color",required = true)String color){
+        return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorColor(color), HttpStatus.OK);
+    }
+
+    @GetMapping("/cochesPorMarca/{marca}")
+    public ResponseEntity<List<CocheForm>> listadoCoches4(@PathVariable String marca){
+        return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorMarca(marca), HttpStatus.OK);
+    }
+
 }

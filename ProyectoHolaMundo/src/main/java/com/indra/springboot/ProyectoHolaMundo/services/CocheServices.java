@@ -45,6 +45,26 @@ public class CocheServices {
     }
 
 
+    public List<CocheForm> listadoCochesPorColor(String color) {
+        List<CocheForm> coches = new ArrayList<>();
+        Iterator it = cocheRepository.buscoColor(color).iterator();
+        while(it.hasNext()){
+            CocheDto cocheDto = (CocheDto) it.next();
+            coches.add(modelMapper.map(cocheDto,CocheForm.class));
+        }
+        return coches;
+    }
+
+    public List<CocheForm> listadoCochesPorMarca(String marca) {
+        List<CocheForm> coches = new ArrayList<>();
+        Iterator it = cocheRepository.buscarMarca(marca).iterator();
+        while(it.hasNext()){
+            CocheDto cocheDto = (CocheDto) it.next();
+            coches.add(modelMapper.map(cocheDto,CocheForm.class));
+        }
+        return coches;
+    }
+
     public List<CocheForm> listadoCochesPorComercial(Long idComercial) {
         ComercialDto comercialDto = comercialRepository.findById(idComercial).get();
         List<CocheForm> coches = new ArrayList<>();
