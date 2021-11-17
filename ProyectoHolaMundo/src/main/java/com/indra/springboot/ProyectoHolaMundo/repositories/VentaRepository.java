@@ -8,9 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Set;
 
 public interface VentaRepository extends CrudRepository<VentasDto, Long> {
 
-    public List<VentasDto> findByComercialDto(ComercialDto comercialDto);
+    public Set<VentasDto> findByComercialDtoSet(ComercialDto comercialDto);
 
 }

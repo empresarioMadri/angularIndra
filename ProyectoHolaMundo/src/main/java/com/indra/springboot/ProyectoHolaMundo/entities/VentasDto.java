@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,4 +29,7 @@ public class VentasDto {
             joinColumns = @JoinColumn(name = "comercialId"),
             inverseJoinColumns = @JoinColumn(name = "ventaId"))
     Set<ComercialDto> comercialDtoSet;
+
+    @OneToMany(mappedBy = "ventasDto")
+    List<CocheDto> cocheDtoList;
 }

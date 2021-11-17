@@ -2,6 +2,7 @@ package com.indra.springboot.ProyectoHolaMundo.repositories;
 
 import com.indra.springboot.ProyectoHolaMundo.entities.CocheDto;
 import com.indra.springboot.ProyectoHolaMundo.entities.ComercialDto;
+import com.indra.springboot.ProyectoHolaMundo.entities.VentasDto;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -15,5 +16,7 @@ public interface CocheRepository extends CrudRepository<CocheDto, Long> {
 
     @Query(value = "select * from coches c where c.marca = :marca",nativeQuery = true)
     public List<CocheDto> buscarMarca(@Param("marca") String marca);
+
+    public CocheDto findByVentasDto(VentasDto ventasDto);
 
 }

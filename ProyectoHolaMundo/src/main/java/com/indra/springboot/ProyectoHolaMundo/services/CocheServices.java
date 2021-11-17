@@ -3,8 +3,10 @@ package com.indra.springboot.ProyectoHolaMundo.services;
 import com.indra.springboot.ProyectoHolaMundo.controllers.CocheForm;
 import com.indra.springboot.ProyectoHolaMundo.entities.CocheDto;
 import com.indra.springboot.ProyectoHolaMundo.entities.ComercialDto;
+import com.indra.springboot.ProyectoHolaMundo.entities.VentasDto;
 import com.indra.springboot.ProyectoHolaMundo.repositories.CocheRepository;
 import com.indra.springboot.ProyectoHolaMundo.repositories.ComercialRepository;
+import com.indra.springboot.ProyectoHolaMundo.repositories.VentaRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class CocheServices {
@@ -21,6 +24,9 @@ public class CocheServices {
 
     @Autowired
     private ComercialRepository comercialRepository;
+
+    @Autowired
+    private VentaRepository ventaRepository;
 
     private ModelMapper modelMapper = new ModelMapper();
 
@@ -67,10 +73,13 @@ public class CocheServices {
 
     public List<CocheForm> listadoCochesPorComercial(Long idComercial) {
         ComercialDto comercialDto = comercialRepository.findById(idComercial).get();
+        Set<VentasDto> ventasDtoSet = ventaRepository.findByComercialDtoSet(comercialDto);
         List<CocheForm> coches = new ArrayList<>();
-        Iterator it = cocheRepository.findByComercialDto(comercialDto).iterator();
+        Iterator it = ventasDtoSet.iterator();
         while(it.hasNext()){
-            CocheDto cocheDto = (CocheDto) it.next();
+            VentasDto ventasDto = (VentasDto) it.next();
+            CocheDto cocheDto = cocheRepository.findByVentasDto(ventasDto);
+            VentasDto ventaTmp = cocheDto.getVentasDto();
             coches.add(modelMapper.map(cocheDto,CocheForm.class));
         }
         return coches;
