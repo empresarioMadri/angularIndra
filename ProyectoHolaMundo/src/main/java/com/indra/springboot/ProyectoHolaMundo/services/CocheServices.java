@@ -6,6 +6,7 @@ import com.indra.springboot.ProyectoHolaMundo.repositories.CocheRepository;
 import com.indra.springboot.ProyectoHolaMundo.repositories.ComercialRepository;
 import com.indra.springboot.ProyectoHolaMundo.repositories.VentaComercialRepository;
 import com.indra.springboot.ProyectoHolaMundo.repositories.VentaRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
+@Slf4j
 public class CocheServices {
 
     @Autowired
@@ -42,15 +44,20 @@ public class CocheServices {
 
         CocheDto cocheDto = modelMapper.map(cocheForm,CocheDto.class);
         cocheDto.setVentasDto(ventasDto);
-        cocheDto = cocheRepository.save(cocheDto);
+        cocheRepository.save(cocheDto);
 
         VentaComercial ventaComercial = new VentaComercial();
         VentaComercialId ventaComercialId = new VentaComercialId(ventasDto.getId(),cocheForm.getComercial());
+        ventaComercial.setVentaComercialId(ventaComercialId);
         ventaComercial.setFecha(new Date());
+        ventaComercial.setComercialDto(comercialDto);
+        ventaComercial.setVentasDto(ventasDto);
 
         ventaComercialRepository.save(ventaComercial);
 
 
+
+        log.info("Venta guardada con exito");
 
 
     }
