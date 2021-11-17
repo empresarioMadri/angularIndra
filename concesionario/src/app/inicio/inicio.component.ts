@@ -12,6 +12,7 @@ export class InicioComponent implements OnInit {
   coches: any;
   marca:string='';
   color:string='';
+  comercial:number=0;
   cadenaPie:string ='';
 
   @ViewChild('selector1')
@@ -35,7 +36,7 @@ export class InicioComponent implements OnInit {
 
   incluirCoche(){
     const coche = new Coche(this.marca,this.color,Coche.ultimaPosicion);
-    this.cocheServicio.incluirCoche(this.marca,this.color).subscribe(
+    this.cocheServicio.incluirCoche(this.marca,this.color,this.venta,this.comercial).subscribe(
       result=>{
         console.log(result);
       },

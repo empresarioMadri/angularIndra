@@ -12,8 +12,8 @@ export class CochesService {
     return this.http.get("http://localhost:9090/coches");
   }
 
-  incluirCoche(marca_:string,color_:string){
-    const body = {'marca':marca_,'color':color_};
+  incluirCoche(marca_:string,color_:string,comercial_:number){
+    const body = {'marca':marca_,'color':color_,'comercial':comercial_};
     let headers = {'Content-Type': 'application/json'};
     return this.http.post<any>('http://localhost:9090/agregarAngular',body,{headers});
   }

@@ -16,5 +16,6 @@ public class CocheForm {
     @Size(min = 2,max = 30)
     private String marca;
     private String color;
+    private Long comercial;
     private Date fecha;
 }
