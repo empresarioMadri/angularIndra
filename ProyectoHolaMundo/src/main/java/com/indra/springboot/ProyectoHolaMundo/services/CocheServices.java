@@ -88,7 +88,7 @@ public class CocheServices {
 
     public List<CocheForm> listadoCochesPorComercial(Long idComercial) {
         ComercialDto comercialDto = comercialRepository.findById(idComercial).get();
-        Set<VentaComercial> ventasDtoSet = ventaRepository.findByComercialDto(comercialDto);
+        Set<VentaComercial> ventasDtoSet = ventaComercialRepository.findByComercialDto(comercialDto);
         List<CocheForm> coches = new ArrayList<>();
         Iterator it = ventasDtoSet.iterator();
         while(it.hasNext()){
