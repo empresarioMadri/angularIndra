@@ -23,13 +23,6 @@ public class VentasDto {
 
     private String descripcion;
 
-    @ManyToMany
-    @JoinTable(
-            name = "VentasComercial",
-            joinColumns = @JoinColumn(name = "comercialId"),
-            inverseJoinColumns = @JoinColumn(name = "ventaId"))
-    Set<ComercialDto> comercialDtoSet;
-
     @OneToMany(mappedBy = "ventasDto")
     List<CocheDto> cocheDtoList;
 }

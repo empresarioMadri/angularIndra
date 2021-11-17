@@ -3,6 +3,7 @@ package com.indra.springboot.ProyectoHolaMundo.services;
 import com.indra.springboot.ProyectoHolaMundo.controllers.CocheForm;
 import com.indra.springboot.ProyectoHolaMundo.entities.CocheDto;
 import com.indra.springboot.ProyectoHolaMundo.entities.ComercialDto;
+import com.indra.springboot.ProyectoHolaMundo.entities.VentaComercial;
 import com.indra.springboot.ProyectoHolaMundo.entities.VentasDto;
 import com.indra.springboot.ProyectoHolaMundo.repositories.CocheRepository;
 import com.indra.springboot.ProyectoHolaMundo.repositories.ComercialRepository;
@@ -73,14 +74,16 @@ public class CocheServices {
 
     public List<CocheForm> listadoCochesPorComercial(Long idComercial) {
         ComercialDto comercialDto = comercialRepository.findById(idComercial).get();
-        Set<VentasDto> ventasDtoSet = ventaRepository.findByComercialDtoSet(comercialDto);
+        Set<VentaComercial> ventasDtoSet = ventaRepository.findByComercialDto(comercialDto);
         List<CocheForm> coches = new ArrayList<>();
         Iterator it = ventasDtoSet.iterator();
         while(it.hasNext()){
-            VentasDto ventasDto = (VentasDto) it.next();
-            CocheDto cocheDto = cocheRepository.findByVentasDto(ventasDto);
+            VentaComercial ventaComercial = (VentaComercial) it.next();
+            CocheDto cocheDto = cocheRepository.findByVentasDto(ventaComercial.getVentasDto());
             VentasDto ventaTmp = cocheDto.getVentasDto();
-            coches.add(modelMapper.map(cocheDto,CocheForm.class));
+            CocheForm cocheForm = modelMapper.map(cocheDto,CocheForm.class);
+            cocheForm.setFecha(ventaComercial.getFecha());
+            coches.add(cocheForm);
         }
         return coches;
     }

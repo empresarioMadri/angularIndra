@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -23,7 +24,7 @@ public class CochesController {
 
     @RequestMapping("/")
     public String hola(Model modelo){
-        CocheForm coche = new CocheForm("seat","rojo");
+        CocheForm coche = new CocheForm("seat","rojo",new Date());
         modelo.addAttribute("coche",coche);
         return "hola";
     }

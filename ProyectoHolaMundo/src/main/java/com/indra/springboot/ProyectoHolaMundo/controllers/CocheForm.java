@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
 @Setter
 @Getter
@@ -15,4 +16,5 @@ public class CocheForm {
     @Size(min = 2,max = 30)
     private String marca;
     private String color;
+    private Date fecha;
 }
