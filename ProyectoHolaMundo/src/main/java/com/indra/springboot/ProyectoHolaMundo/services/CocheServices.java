@@ -127,4 +127,10 @@ public class CocheServices {
         }
         return coches;
     }
+
+    public void borrarCoche(Long idCoche) {
+        CocheDto cocheDto = new CocheDto();
+        cocheDto.setId(idCoche);
+        cocheRepository.delete(cocheDto);
+    }
 }

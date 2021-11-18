@@ -3,15 +3,15 @@
       <th>id</th>
       <th>Marca</th>
       <th>Color</th>
-      <th>posicion</th>
       <th>comercial</th>
+      <th>acciones</th>
     </tr>
-    <tr *ngFor="let coche of coches">
+    <tr *ngFor="let coche of coches;let i=index">
       <td>{{coche.id}}</td>
       <td>{{coche.marca}}</td>
       <td>{{coche.color}}</td>
-      <td>{{coche.posicion}}</td>
-      <td>{{coche.comercial}}</td>
+      <td>{{coche.comercials}}</td>
+      <td><button (click)="modificar(i)">Modificar</button><button (click)="borrar(i)">Borrar</button></td>
     </tr>
   </table>
   <ng-template #sinCoches>

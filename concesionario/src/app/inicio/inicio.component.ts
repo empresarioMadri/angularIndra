@@ -10,6 +10,7 @@ import { CochesService } from '../coches.service';
 export class InicioComponent implements OnInit {
 
   coches: any;
+  id:number=0;
   marca:string='';
   color:string='';
   comercial:number=0;
@@ -36,9 +37,12 @@ export class InicioComponent implements OnInit {
 
   incluirCoche(){
     const coche = new Coche(this.marca,this.color,Coche.ultimaPosicion);
-    this.cocheServicio.incluirCoche(this.marca,this.color,this.comercial).subscribe(
+    this.cocheServicio.incluirCoche(this.marca,this.color,this.comercial,this.id).subscribe(
       result=>{
         console.log(result);
+        this.marca='';
+        this.id=0;
+        this.color='';
         this.cocheServicio.traerCoches().subscribe(
           result=>{
             this.coches=result;
@@ -63,12 +67,27 @@ export class InicioComponent implements OnInit {
   }
 
   borrar(indice:number){
-    this.coches.splice(indice,1);
-    Coche.ultimaPosicion--;
-    for (let index = 0; index < this.coches.length; index++) {
-      const coche = this.coches[index];
-      coche.posicion=index;
-    }
+    this.cocheServicio.borrarCoche(this.coches[indice].id).subscribe(
+      result=>{
+        this.cocheServicio.traerCoches().subscribe(
+          result=>{
+            this.coches=result;
+          },
+          error=>{
+            console.log('Error al recuperar coches');
+          }
+        )
+      },
+      error=>{
+        console.log('Error al borrar un coche');
+      }
+    )
+  }
+
+  modificarCoche(indice:number){
+    this.marca = this.coches[indice].marca;
+    this.color = this.coches[indice].color;
+    this.id = this.coches[indice].id;
   }
 
   cambiarPie(cadena:string){
@@ -89,13 +108,14 @@ export class InicioComponent implements OnInit {
 class Coche{
   private _marca:string;
   private _color:string;
-  private _posicion:number;
+  private _comercial:number=0;
+  private _id:number=0;
+  private _posicion:number=0;
   static ultimaPosicion:number=0;
 
   constructor(marca:string,color:string,posicion:number){
     this._marca=marca;
     this._color=color;
-    this._posicion=posicion;
   }
 
   public get marca():string{
@@ -114,13 +134,19 @@ class Coche{
     this._color=color;
   }
 
-  public get posicion():number{
-    return this._posicion;
+  public set comercial(comercial:number){
+    this._comercial=comercial;
+  }
+
+  public set id(id:number){
+    this._id=id;
   }
 
   public set posicion(posicion:number){
     this._posicion=posicion;
   }
+
+  
 
 }
 

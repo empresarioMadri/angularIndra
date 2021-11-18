@@ -2,6 +2,7 @@ package com.indra.springboot.ProyectoHolaMundo.controllers;
 
 import com.indra.springboot.ProyectoHolaMundo.services.CocheServices;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @Controller
 @Slf4j
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE})
 public class CochesController {
 
     @Autowired
@@ -58,6 +59,12 @@ public class CochesController {
     @GetMapping("/cochesPorComercial")
     public ResponseEntity<List<CocheForm>> listadoCoches(@RequestParam(name="id",required = true)Long idComercial){
         return new ResponseEntity<List<CocheForm>>(cocheServices.listadoCochesPorComercial(idComercial), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/borrarAngular/{idCoche}")
+    public ResponseEntity<String> borrarCoche(@PathVariable Long idCoche){
+        cocheServices.borrarCoche(idCoche);
+        return new ResponseEntity("",HttpStatus.OK);
     }
 
     @GetMapping("/cochesPorComercial2/{idComercial}")

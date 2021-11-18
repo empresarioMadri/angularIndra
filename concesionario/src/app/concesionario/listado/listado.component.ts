@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-listado',
@@ -9,9 +9,21 @@ export class ListadoComponent implements OnInit {
 
   @Input() coches:any;
 
+  @Output() modificarCocheListado= new EventEmitter();
+
+  @Output() borrarCocheListado= new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  modificar(indice:number){
+    this.modificarCocheListado.emit(indice);
+  }
+
+  borrar(indice:number){
+    this.borrarCocheListado.emit(indice);
   }
 
 }

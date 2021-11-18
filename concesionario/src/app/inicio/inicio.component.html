@@ -2,6 +2,9 @@
 <app-cabecera cadena="prueba1" (botonPulsado)="cambiarPie($event)" #selector2></app-cabecera>
 
 <p>
+  Identificador BD <input type='text' [(ngModel)]='id' disabled='true'>
+</p>
+<p>
   Incluir la marca <input type='text' [(ngModel)]='marca'>
 </p>
 <p>
@@ -18,4 +21,4 @@
 
 <app-pie cadena="{{cadenaPie}}" [coches]="coches"></app-pie>
 
-<app-listado [coches]="coches"></app-listado>
+<app-listado [coches]="coches" (modificarCocheListado)="modificarCoche($event)" (borrarCocheListado)="borrar($event)"></app-listado>
