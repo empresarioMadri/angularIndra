@@ -5,6 +5,7 @@ import lombok.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -17,5 +18,7 @@ public class CocheForm {
     private String marca;
     private String color;
     private Long comercial;
+    private List<Long> comercials;
     private Date fecha;
+    private Long id;
 }

@@ -34,26 +34,37 @@ public class CocheServices {
     public void agregarCoche(CocheForm cocheForm){
         //CocheDto cocheDto = new CocheDto(null,cocheForm.getMarca(),cocheForm.getColor());
 
-        VentasDto ventasDto = new VentasDto(null,"Venta realizada por el comercial " + cocheForm.getComercial() +
-            " del coche " + cocheForm.getMarca() + " " + cocheForm.getColor(),new ArrayList<>());
+        ComercialDto comercialDto = null;
+        VentasDto ventasDto = null;
+        if(cocheForm.getComercial()!=null) {
+            try {
+                comercialDto = comercialRepository.findById(cocheForm.getComercial()).get();
+                ventasDto = new VentasDto(null,"Venta realizada por el comercial " + cocheForm.getComercial() +
+                        " del coche " + cocheForm.getMarca() + " " + cocheForm.getColor(),new ArrayList<>());
 
-        ventaRepository.save(ventasDto);
+                ventaRepository.save(ventasDto);
+                VentaComercial ventaComercial = new VentaComercial();
+                VentaComercialId ventaComercialId = new VentaComercialId(ventasDto.getId(),cocheForm.getComercial());
+                ventaComercial.setVentaComercialId(ventaComercialId);
+                ventaComercial.setFecha(new Date());
+                ventaComercial.setComercialDto(comercialDto);
+                ventaComercial.setVentasDto(ventasDto);
 
-        ComercialDto comercialDto = comercialRepository.findById(cocheForm.getComercial()).get();
+                ventaComercialRepository.save(ventaComercial);
+            }catch (NoSuchElementException e){
+                log.error("El comercial no es valido");
+            }
 
+        }
 
         CocheDto cocheDto = modelMapper.map(cocheForm,CocheDto.class);
         cocheDto.setVentasDto(ventasDto);
         cocheRepository.save(cocheDto);
 
-        VentaComercial ventaComercial = new VentaComercial();
-        VentaComercialId ventaComercialId = new VentaComercialId(ventasDto.getId(),cocheForm.getComercial());
-        ventaComercial.setVentaComercialId(ventaComercialId);
-        ventaComercial.setFecha(new Date());
-        ventaComercial.setComercialDto(comercialDto);
-        ventaComercial.setVentasDto(ventasDto);
 
-        ventaComercialRepository.save(ventaComercial);
+
+
+
 
 
 
@@ -67,7 +78,15 @@ public class CocheServices {
         Iterator it = cocheRepository.findAll().iterator();
         while(it.hasNext()){
             CocheDto cocheDto = (CocheDto) it.next();
-            coches.add(modelMapper.map(cocheDto,CocheForm.class));
+            VentasDto ventasDto = cocheDto.getVentasDto();
+            Set<VentaComercial> ventaComercialSet = ventaComercialRepository.findByVentasDto(ventasDto);
+            List<Long> comercialDtos = new ArrayList<>();
+            for (VentaComercial ventaComercial:ventaComercialSet) {
+                comercialDtos.add(ventaComercial.getComercialDto().getId());
+            }
+            CocheForm cocheForm = modelMapper.map(cocheDto,CocheForm.class);
+            cocheForm.setComercials(comercialDtos);
+            coches.add(cocheForm);
         }
         return coches;
     }

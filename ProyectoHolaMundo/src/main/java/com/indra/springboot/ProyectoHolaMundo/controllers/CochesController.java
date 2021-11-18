@@ -24,7 +24,7 @@ public class CochesController {
 
     @RequestMapping("/")
     public String hola(Model modelo){
-        CocheForm coche = new CocheForm("seat","rojo",0L,new Date());
+        CocheForm coche = new CocheForm("seat","rojo",null,null,new Date(),0L);
         modelo.addAttribute("coche",coche);
         return "hola";
     }

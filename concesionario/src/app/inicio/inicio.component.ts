@@ -39,6 +39,14 @@ export class InicioComponent implements OnInit {
     this.cocheServicio.incluirCoche(this.marca,this.color,this.comercial).subscribe(
       result=>{
         console.log(result);
+        this.cocheServicio.traerCoches().subscribe(
+          result=>{
+            this.coches=result;
+          },
+          error=>{
+            console.log('Error al recuperar coches');
+          }
+        )
       },
       error=>{
         console.log(error);

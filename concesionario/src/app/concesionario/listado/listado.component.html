@@ -1,13 +1,17 @@
 <table border="3" *ngIf="coches.length>0; else sinCoches">
     <tr>
+      <th>id</th>
       <th>Marca</th>
       <th>Color</th>
       <th>posicion</th>
+      <th>comercial</th>
     </tr>
     <tr *ngFor="let coche of coches">
+      <td>{{coche.id}}</td>
       <td>{{coche.marca}}</td>
       <td>{{coche.color}}</td>
       <td>{{coche.posicion}}</td>
+      <td>{{coche.comercial}}</td>
     </tr>
   </table>
   <ng-template #sinCoches>
