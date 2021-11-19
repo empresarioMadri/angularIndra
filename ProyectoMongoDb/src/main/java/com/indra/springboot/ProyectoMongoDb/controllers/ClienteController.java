@@ -22,7 +22,7 @@ public class ClienteController {
         return clienteService.altaCliente(parametros.get("nombre"), parametros.get("direccion"));
     }
 
-    @PostMapping("/altaCoche")
+    @PostMapping("/altaCoche/{idCliente}")
     public ResponseEntity<Cliente> altaCliente(@RequestBody Coche coche, @PathVariable("idCliente") String idCliente) {
         return new ResponseEntity<>(clienteService.altaCoche(coche, idCliente), HttpStatus.OK);
     }
