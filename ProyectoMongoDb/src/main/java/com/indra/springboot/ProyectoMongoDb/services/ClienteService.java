@@ -35,4 +35,9 @@ public class ClienteService {
     }
 
 
+    public void borrarCliente(String idCliente) {
+        Cliente cliente = new Cliente();
+        cliente.setId(idCliente);
+        clienteRepository.delete(cliente);
+    }
 }
