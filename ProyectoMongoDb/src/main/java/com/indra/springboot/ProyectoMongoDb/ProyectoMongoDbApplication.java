@@ -1,4 +1,4 @@
-package com.indra.springboot.ProyectoHolaMundo;
+package com.indra.springboot.ProyectoMongoDb;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
