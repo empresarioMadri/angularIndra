@@ -1,10 +1,12 @@
 package com.indra.springboot.ProyectoMongoDb.services;
 
 import com.indra.springboot.ProyectoMongoDb.entities.Cliente;
+import com.indra.springboot.ProyectoMongoDb.entities.Coche;
 import com.indra.springboot.ProyectoMongoDb.repositories.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
@@ -39,5 +41,15 @@ public class ClienteService {
         Cliente cliente = new Cliente();
         cliente.setId(idCliente);
         clienteRepository.delete(cliente);
+    }
+
+    public Cliente altaCoche(Coche coche, String idCliente) {
+        Cliente cliente = getCliente(idCliente);
+
+        if(cliente.getCocheList()==null){
+            cliente.setCocheList(new ArrayList<>());
+        }
+        cliente.getCocheList().add(coche);
+        return clienteRepository.save(cliente);
     }
 }
