@@ -23,13 +23,18 @@ public class ClienteController {
     }
 
     @PostMapping("/altaCoche/{idCliente}")
-    public ResponseEntity<Cliente> altaCliente(@RequestBody Coche coche, @PathVariable("idCliente") String idCliente) {
+    public ResponseEntity<Coche> altaCliente(@RequestBody Coche coche, @PathVariable("idCliente") String idCliente) {
         return new ResponseEntity<>(clienteService.altaCoche(coche, idCliente), HttpStatus.OK);
     }
 
     @GetMapping("/getCliente/{idCliente}")
     public Cliente getCliente(@PathVariable("idCliente") String idCliente) {
         return clienteService.getCliente(idCliente);
+    }
+
+    @GetMapping("/getCoche/{idCliente}")
+    public Coche getCoche(@PathVariable("idCliente") String idCliente) {
+        return clienteService.getCocheByCliente(idCliente);
     }
 
     @DeleteMapping("/delCliente/{idCliente}")

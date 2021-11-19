@@ -3,6 +3,7 @@ package com.indra.springboot.ProyectoMongoDb.services;
 import com.indra.springboot.ProyectoMongoDb.entities.Cliente;
 import com.indra.springboot.ProyectoMongoDb.entities.Coche;
 import com.indra.springboot.ProyectoMongoDb.repositories.ClienteRepository;
+import com.indra.springboot.ProyectoMongoDb.repositories.CocheRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,9 @@ public class ClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private CocheRepository cocheRepository;
 
 
     public Cliente getCliente(String id){
@@ -43,13 +47,16 @@ public class ClienteService {
         clienteRepository.delete(cliente);
     }
 
-    public Cliente altaCoche(Coche coche, String idCliente) {
+    public Coche altaCoche(Coche coche, String idCliente) {
         Cliente cliente = getCliente(idCliente);
 
-        if(cliente.getCocheList()==null){
-            cliente.setCocheList(new ArrayList<>());
-        }
-        cliente.getCocheList().add(coche);
-        return clienteRepository.save(cliente);
+        coche.setIdCliente(idCliente);
+        coche.setId(UUID.randomUUID().toString());
+
+        return cocheRepository.save(coche);
+    }
+
+    public Coche getCocheByCliente(String idCliente) {
+        return cocheRepository.findByIdCliente(idCliente);
     }
 }

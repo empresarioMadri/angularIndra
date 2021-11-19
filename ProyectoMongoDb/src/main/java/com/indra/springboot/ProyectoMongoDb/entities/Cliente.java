@@ -19,7 +19,5 @@ public class Cliente {
 
     private String direccion;
 
-    private List<Coche> cocheList;
-
 
 }
