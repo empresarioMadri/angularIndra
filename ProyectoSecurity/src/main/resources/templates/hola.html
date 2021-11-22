@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?idioma=' + selectedOption);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+Escoger idioma
+<select id="locales">
+    <option value=""></option>
+    <option value="es" th:text="Español"></option>
+    <option value="en" th:text="Ingles"></option>
+</select>
+<h1 th:text="#{titulo}"></h1>
+<h1 th:text="${coche.marca}"></h1>
+<h1 th:text="${coche.color}"></h1>
+<form action="#" th:action="@{/agregar}" method="post" th:object="${coche}">
+    Marca<input type="text" th:field="*{marca}"/>
+    <span th:if="${#fields.hasErrors('marca')}">El campo marca no es correcto</span>
+    <br>
+    Color<input type="text" th:field="*{color}"/><br>
+    <input type="submit" value="Agregar"/>
+</form>
+</body>
+</html>
