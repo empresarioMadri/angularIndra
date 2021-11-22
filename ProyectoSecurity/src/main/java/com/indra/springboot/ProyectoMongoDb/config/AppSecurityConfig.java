@@ -39,8 +39,8 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/", "/hola","/coches","/agregarAngular").permitAll()
-                .antMatchers("/admin").hasAnyAuthority("ADMIN")
-                .antMatchers("/hello").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/admin","/menu").hasAnyAuthority("ADMIN")
+                .antMatchers("/hello","/agregar").hasAnyAuthority("USER","ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

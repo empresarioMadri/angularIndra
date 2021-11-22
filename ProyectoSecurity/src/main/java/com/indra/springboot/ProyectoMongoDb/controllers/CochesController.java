@@ -23,12 +23,13 @@ public class CochesController {
     @Autowired
     private CocheService cocheService;
 
-    @RequestMapping("/")
-    public String hola(Model modelo){
+    @RequestMapping("/menu")
+    public String menu(Model modelo){
         CocheForm coche = new CocheForm("seat","rojo",null,null,new Date(),null);
         modelo.addAttribute("coche",coche);
-        return "hola";
+        return "menu";
     }
+
 
     @PostMapping("/agregar")
     public String agregarCoche(@ModelAttribute("coche") @Valid CocheForm coche, BindingResult bindingResult){

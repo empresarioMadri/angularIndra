@@ -22,7 +22,7 @@ public class CocheService {
     public void agregarCoche(CocheForm cocheF) {
 
         Coche coche = modelMapper.map(cocheF, Coche.class);
-        if(coche.getId().equals("0"))
+        if(coche.getId()==null || coche.getId().equals("0"))
             coche.setId(UUID.randomUUID().toString());
         cocheRepository.save(coche);
 
