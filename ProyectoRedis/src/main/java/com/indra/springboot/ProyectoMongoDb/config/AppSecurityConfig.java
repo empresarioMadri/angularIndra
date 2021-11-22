@@ -14,19 +14,19 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         return new MiUsuarioDetallesService();
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         //return NoOpPasswordEncoder.getInstance();
         return DefaultPasswordEncoderFactories.createDelegatingPasswordEncoder();
         //return new BCryptPasswordEncoder();
     }
 
     @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(userDetailsService());
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -38,9 +38,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/", "/hola","/coches","/agregarAngular","/getCocheRedis/*").permitAll()
-                .antMatchers("/admin","/menu").hasAnyAuthority("ADMIN")
-                .antMatchers("/hello","/agregar").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/", "/hola", "/coches", "/agregarAngular/*", "/getCocheRedis/*").permitAll()
+                .antMatchers("/admin", "/menu").hasAnyAuthority("ADMIN")
+                .antMatchers("/hello", "/agregar").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
