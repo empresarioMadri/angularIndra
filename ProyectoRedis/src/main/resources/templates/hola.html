@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#locales").change(function () {
+                var selectedOption = $('#locales').val();
+                if (selectedOption != ''){
+                    window.location.replace('?idioma=' + selectedOption);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+Escoger idioma
+<select id="locales">
+    <option value=""></option>
+    <option value="es" th:text="Español"></option>
+    <option value="en" th:text="Ingles"></option>
+</select>
+<a th:href="@{/menu}">Entrar en el menu</a>
+</body>
+</html>

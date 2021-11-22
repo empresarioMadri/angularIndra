@@ -1,9 +1,11 @@
 package com.indra.springboot.ProyectoMongoDb.controllers;
 
+import com.indra.springboot.ProyectoMongoDb.entities.Coche;
 import com.indra.springboot.ProyectoMongoDb.form.CocheForm;
 import com.indra.springboot.ProyectoMongoDb.services.CocheService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -38,6 +40,7 @@ public class CochesController {
         }
         log.info("Agregando el coche " + coche );
         cocheService.agregarCoche(coche);
+
         return "menu";
     }
 
@@ -49,6 +52,11 @@ public class CochesController {
         log.info("Agregando el coche " + coche );
         cocheService.agregarCoche(coche);
         return new ResponseEntity<>("",HttpStatus.OK);
+    }
+
+    @GetMapping("/getCocheRedis/{idCoche}")
+    public ResponseEntity<CocheForm> getCocheRedis(@PathVariable("idCoche")String idCoche){
+        return new ResponseEntity<CocheForm>(cocheService.getCocheRedis(idCoche), HttpStatus.OK);
     }
 
     @GetMapping("/coches")
