@@ -17,5 +17,7 @@ public class Coche {
     private String marca;
     private String color;
 
+    private String comercial;
+
     private String idCliente;
 }
