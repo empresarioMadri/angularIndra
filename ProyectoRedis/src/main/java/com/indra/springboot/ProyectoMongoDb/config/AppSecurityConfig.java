@@ -2,6 +2,7 @@ package com.indra.springboot.ProyectoMongoDb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -36,9 +37,9 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/hola", "/coches", "/agregarAngular/*", "/getCocheRedis/*").permitAll()
+                .antMatchers("/", "/hola", "/coches", "/getCocheRedis/*", "/agregarAngular","/getCocheRedis/*", "/agregarAngular").permitAll()
                 .antMatchers("/admin", "/menu").hasAnyAuthority("ADMIN")
                 .antMatchers("/hello", "/agregar").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().authenticated()
