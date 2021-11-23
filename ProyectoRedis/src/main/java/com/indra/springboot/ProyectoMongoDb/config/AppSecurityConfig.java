@@ -39,7 +39,7 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/hola", "/coches", "/getCocheRedis/*", "/agregarAngular","/getCocheRedis/*", "/agregarAngular").permitAll()
+                .antMatchers("/", "/hola", "/coches", "/getCocheRedis/*", "/agregarAngular","/getCocheRedis/*", "/agregarAngular","/actuator/**").permitAll()
                 .antMatchers("/admin", "/menu").hasAnyAuthority("ADMIN")
                 .antMatchers("/hello", "/agregar").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().authenticated()
