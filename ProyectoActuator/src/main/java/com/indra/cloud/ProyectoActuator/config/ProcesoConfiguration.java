@@ -70,7 +70,7 @@ public class ProcesoConfiguration {
     
     @Bean
     public Job job(Step paso,TarjetaCreditoExecutionListener tarjetaCreditoExecutionListener){
-        Job job = jobBuilderFactory.get("trabajo1")
+        Job job = jobBuilderFactory.get("trabajo3")
                 .listener(tarjetaCreditoExecutionListener)
                 .flow(paso)
                 .end()
@@ -85,7 +85,7 @@ public class ProcesoConfiguration {
                      TarjetaCreditoReaderListener tarjetaCreditoReaderListener,
                      TarjetaCreditoProcessorListener tarjetaCreditoProcessorListener,
                      RiesgoWriterListener riesgoWriterListener){
-        TaskletStep step = stepBuilderFactory.get("paso1")
+        TaskletStep step = stepBuilderFactory.get("paso3")
                 .<TarjetaCredito, Riesgo>chunk(100)
                 .reader(tarjetaCreditoReader)
                 .processor(tarjetaCreditoProcessor)
