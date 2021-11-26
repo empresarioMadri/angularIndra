@@ -14,7 +14,7 @@ public class LoginDto {
 	@Id
 	private String dni;
 	
-	private String login;
+	private String usuario;
 	
 	private String clave;
 

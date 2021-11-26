@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.indra.cloud.ProyectoEurekaClient.entities.LoginDto;
 import com.indra.cloud.ProyectoEurekaClient.forms.LoginForm;
 import com.indra.cloud.ProyectoEurekaClient.repositiries.UsuarioRepository;
 
@@ -23,7 +24,8 @@ public class ClienteController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public LoginForm login(@RequestBody LoginForm loginForm) {
 		ModelMapper modelMapper = new ModelMapper();
-		return modelMapper.map(usuarioRepository.findByUsuarioAndClave(loginForm.getUsuario(), loginForm.getClave()),LoginForm.class);
+		LoginDto loginDto = usuarioRepository.findByUsuarioAndClave(loginForm.getUsuario(), loginForm.getClave());
+		return modelMapper.map(loginDto,LoginForm.class);
 	}
 
 }
