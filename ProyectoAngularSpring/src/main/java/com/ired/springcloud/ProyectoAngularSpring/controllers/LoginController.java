@@ -15,8 +15,8 @@ import com.ired.springcloud.ProyectoAngularSpring.forms.LoginForm;
 public class LoginController {
 	
 	@PostMapping("/login")
-	public ResponseEntity<String> login(@RequestBody LoginForm loginForm){
-		return new ResponseEntity<String>("Login correcto",HttpStatus.OK);
+	public ResponseEntity<LoginForm> login(@RequestBody LoginForm loginForm){
+		return new ResponseEntity<LoginForm>(loginForm,HttpStatus.OK);
 	}
 
 }

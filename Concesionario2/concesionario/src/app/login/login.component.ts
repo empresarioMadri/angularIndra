@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     mantenerConectado:new FormControl('false')
   })
 
+  usuarioLogueado:any;
+
   constructor(private loginService:LoginService) {
         
   }
@@ -24,10 +26,11 @@ export class LoginComponent implements OnInit {
 
   login(){
       this.loginService.login(this.formularioLogin.get('usuario')?.value,this.formularioLogin.get('clave')?.value).subscribe(
-        result=>{
-          console.log('logueado ' + result);
+        (result)=>{
+          this.usuarioLogueado = result;
+          console.log('logueado ' + this.usuarioLogueado.usuario);
         },
-        error=>{
+        (error)=>{
             console.log('Error ' + error);
         }
       )
